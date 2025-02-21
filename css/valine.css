@@ -1,0 +1,18 @@
+#veditor {
+    background-image: url("/img/valinebg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: vertical
+}
+
+#veditor:hover{
+    background-position-y: 200px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+#vcomments {
+  font-family: CheeseFont;
+  font-size: 21px;
+}
