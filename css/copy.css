@@ -1,0 +1,4 @@
+::selection {
+    color: #66ccff; /* 设置选中文字的颜色 */
+    background: transparent; /* 设置选中文字的背景为透明 */
+}

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://onaniishoujo.github.io/sitemap-index.xml
