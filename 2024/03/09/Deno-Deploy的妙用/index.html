@@ -1,345 +1,269 @@
 
-
 <!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style>:root{--waline-theme-color: #66ccff !important;--waline-active-color: #39c5bb !important;}</style><!-- hexo injector head_begin end -->
+    <meta charset="utf-8" />
+    <title>Deno Deploy的妙用 | 少女的Blog</title>
+    <meta name="author" content="少女" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/myicon.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-<html lang="zh-CN" data-default-color-scheme=light>
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-<head><!-- hexo injector head_begin start --><link rel="stylesheet" href="https://cdn.staticfile.net/firacode/6.2.0/fira_code.min.css"><link id="custom-css" rel="stylesheet" type="text/css" href="/css/divback.css"><canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 6; pointer-events: none;" ></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/firework.js"></script><link rel="stylesheet" href="https://cdn.staticfile.net/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><style>:root{--waline-theme-color: #66ccff !important;--waline-active-color: #39c5bb !important;}</style><!-- hexo injector head_begin end -->
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/myicon.jpg">
-  <link rel="icon" href="/img/myicon.jpg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#ebebebcc">
-  <meta name="author" content="オナニー少女">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="搭建Hexo博客默认分配一个project_name.deno.dev域名，速度还可以 类似Cloudflare Pages 需要准备一个GitHub账号，使用GitHub登陆Deno  Deno Deploy中新建一个Project，选择Create an empty project 如果找不到Create an empty project，这里有链接：New Project - Deploy">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Deno Deploy的妙用">
-<meta property="og:url" content="https://onaniisyoujo.github.io/2024/03/09/Deno-Deploy%E7%9A%84%E5%A6%99%E7%94%A8/index.html">
-<meta property="og:site_name" content="少女的Blog">
-<meta property="og:description" content="搭建Hexo博客默认分配一个project_name.deno.dev域名，速度还可以 类似Cloudflare Pages 需要准备一个GitHub账号，使用GitHub登陆Deno  Deno Deploy中新建一个Project，选择Create an empty project 如果找不到Create an empty project，这里有链接：New Project - Deploy">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://onaniisyoujo.github.io/img/20240309/denop.png">
-<meta property="article:published_time" content="2024-03-09T12:24:18.000Z">
-<meta property="article:modified_time" content="2024-04-27T06:32:49.148Z">
-<meta property="article:author" content="オナニー少女">
-<meta property="article:tag" content="Code">
-<meta property="article:tag" content="Github">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://onaniisyoujo.github.io/img/20240309/denop.png">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>Deno Deploy的妙用 ♡ 少女的Blog</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="/js/lib/preview.js"></script>
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline.min.css" />
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline-meta.min.css" />
 
 
 
-  
-<link rel="stylesheet" href="/css/copy.css">
-<link rel="stylesheet" href="/css/heimu.css">
-<link rel="stylesheet" href="/css/valine.css">
-<link rel="stylesheet" href="/css/code.css">
-<link rel="stylesheet" href="/css/scroll.css">
 
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"onaniisyoujo.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"♡","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#ebebeb","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<!-- hexo injector head_end start --><script>document.addEventListener("DOMContentLoaded",()=>{fetch("https://onaniishoujo.deno.dev/").then(e=>e.json()).then(e=>{document.getElementById("counter_uv").innerHTML=e.uv,document.getElementById("counter_pv").innerHTML=e.pv})});</script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
-
-
+<link rel="stylesheet" href="/css/main.css" />
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.staticfile.net/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" /><style>body { font-family: "LXGW WenKai Screen", Lexend, "Noto Sans SC", sans-serif; }</style><script>fetch("https://onaniishoujo.deno.dev/").then(e=>e.json()).then(e=>{document.getElementById("counter_uv").innerHTML=e.uv,document.getElementById("counter_pv").innerHTML=e.pv});</script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>少女的Blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>少女的BLOG</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/brewski">
-                <i class="iconfont icon-bookmark"></i>
-                <span>里站</span>
-              </a>
-            </li>
-          
+        <a href="/shuoshuo">
+            <i class="fa-solid fa-pen fa-fw"></i>
+            <span>&ensp;Diary</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/shuoshuo">
-                <i class="iconfont icon-pen"></i>
-                <span>说说</span>
-              </a>
-            </li>
-          
+        <a href="/brewski">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Inside</span>
+        </a>
         
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle" onclick="toggleCSS()">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" style="background: url('https://res.cloudinary.com/dsfrgrq3w/image/upload/v1700994213/head_q2tmqs.jpg') no-repeat center center; background-size: cover;">
-  <video autoplay loop muted playsinline poster="https://res.cloudinary.com/dsfrgrq3w/image/upload/v1700994213/head_q2tmqs.jpg"
-         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-    <source src="https://t.mwm.moe/acg/acg" type="video/mp4">
-  </video>
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="Deno Deploy的妙用"></span>
-          
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;少女的BLOG</span>
         </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <a href="/shuoshuo">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-pen fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Diary</div>
+                    </div>
+                </a>
+                
+                <a href="/brewski">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Inside</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-09 20:24" pubdate>
-          2024年3月9日 晚上
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          3.1k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          26 分钟
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Deno Deploy的妙用</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/3/9
         </span>
         
-      
-    
-  </div>
-
-
+        <span class="category">
+            <a href="/categories/Code/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Code
+            </a>
+        </span>
         
-      </div>
-
-      
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/Code/" style="color: #00a596">Code</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Github/" style="color: #ffa2c4">Github</a>
+            </span>
+            
+        </span>
+        
     </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">Deno Deploy的妙用</h1>
-            
-              <p id="updated-time" class="note note-info" style="">
-                
-                  
-                    本文最后更新于：2024年4月27日 下午
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h2 id="搭建Hexo博客"><a href="#搭建Hexo博客" class="headerlink" title="搭建Hexo博客"></a>搭建Hexo博客</h2><p>默认分配一个<code>project_name.deno.dev</code>域名，速度还可以</p>
+    <div class="content" v-pre>
+        <h2 id="搭建Hexo博客"><a href="#搭建Hexo博客" class="headerlink" title="搭建Hexo博客"></a>搭建Hexo博客</h2><p>默认分配一个<code>project_name.deno.dev</code>域名，速度还可以</p>
 <p>类似Cloudflare Pages</p>
 <p>需要准备一个GitHub账号，使用GitHub登陆<a target="_blank" rel="noopener" href="https://dash.deno.com/signin">Deno</a></p>
 <ol>
 <li><p>Deno Deploy中新建一个<code>Project</code>，选择<code>Create an empty project</code></p>
 <p>如果找不到<code>Create an empty project</code>，这里有链接：<a target="_blank" rel="noopener" href="https://dash.deno.com/new">New Project - Deploy (deno.com)</a></p>
-<p><img src="/img/20240309/denop.png" srcset="/img/loading.gif" lazyload alt="project"></p>
+<p><img src="/images/20240309/denop.png" alt="project"></p>
 </li>
 <li><p>在博客的GitHub仓库中新建一个workflow，内容如下：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">workflow_dispatch:</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span> <span class="hljs-string">gh-pages</span>  <span class="hljs-comment"># 根据需要设置触发条件</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">deploy:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Clone</span> <span class="hljs-string">repository</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v4</span><br>        <span class="hljs-attr">with:</span> <br>          <span class="hljs-attr">ref:</span> <span class="hljs-string">&#x27;gh-pages&#x27;</span>  <span class="hljs-comment"># 根据需要修改为你的分支名</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">Deno</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">denoland/setup-deno@v1</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">deno-version:</span> <span class="hljs-string">v1.x</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">deployctl</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">&quot;deno install --allow-all --no-check -r -f https://deno.land/x/deploy/deployctl.ts&quot;</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Upload</span> <span class="hljs-string">to</span> <span class="hljs-string">Deno</span> <span class="hljs-string">Deploy</span><br>        <span class="hljs-attr">env:</span> <br>          <span class="hljs-attr">DENO_TOKEN:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DENO_TOKEN</span> <span class="hljs-string">&#125;&#125;</span>  <span class="hljs-comment"># 使用设置的secrets名</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">&quot;DENO_DEPLOY_TOKEN=$DENO_TOKEN deployctl deploy --prod --project=&lt;project_name&gt; https://deno.land/std@0.208.0/http/file_server.ts&quot;</span>  <span class="hljs-comment"># 将&lt;project_name&gt;替换为你在Deno新建的项目名</span><br></code></pre></td></tr></table></figure>
+<pre><code class="yaml">name: Deploy
+on:
+  workflow_dispatch:
+  push:
+    branches: gh-pages  # 根据需要设置触发条件
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        with: 
+          ref: &#39;gh-pages&#39;  # 根据需要修改为你的分支名
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Install deployctl
+        run: &quot;deno install --allow-all --no-check -r -f https://deno.land/x/deploy/deployctl.ts&quot;
+
+      - name: Upload to Deno Deploy
+        env: 
+          DENO_TOKEN: $&#123;&#123; secrets.DENO_TOKEN &#125;&#125;  # 使用设置的secrets名
+        run: &quot;DENO_DEPLOY_TOKEN=$DENO_TOKEN deployctl deploy --prod --project=&lt;project_name&gt; https://deno.land/std@0.208.0/http/file_server.ts&quot;  # 将&lt;project_name&gt;替换为你在Deno新建的项目名
+</code></pre>
 </li>
 <li><p>在<a target="_blank" rel="noopener" href="https://dash.deno.com/account#access-tokens">https://dash.deno.com/account#access-tokens</a>生成一个Access Token，添加进博客GitHub仓库的secrets中，名字可以用上面的<code>DENO_TOKEN</code>（也可以用别的名字）</p>
 </li>
@@ -347,443 +271,139 @@
 <h2 id="访问量统计"><a href="#访问量统计" class="headerlink" title="访问量统计"></a>访问量统计</h2><p>使用Deno KV实现了一个类似不蒜子计数的功能</p>
 <h6 id="Deno-Deploy端的配置"><a href="#Deno-Deploy端的配置" class="headerlink" title="Deno Deploy端的配置"></a>Deno Deploy端的配置</h6><p>需要确保Deno KV中已经有<code>user</code>和<code>new</code>两组数据，没有可以先创建出来</p>
 <p>新建一个Playground，代码如下（请替换<code>url_set</code>的内容）</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Hash</span>, encode &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/checksum@1.2.0/mod.ts&quot;</span>;<br><span class="hljs-keyword">const</span> kv = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Deno</span>.<span class="hljs-title function_">openKv</span>();<br><span class="hljs-keyword">const</span> url_set = [<span class="hljs-string">&#x27;这里替换为该Deploy项目的地址&#x27;</span>, <span class="hljs-string">&#x27;后面这几个是你的网站地址(可以只填一个)&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>]<br><br><span class="hljs-title class_">Deno</span>.<span class="hljs-title function_">serve</span>(<span class="hljs-keyword">async</span> (<span class="hljs-attr">request</span>: <span class="hljs-title class_">Request</span>, <span class="hljs-attr">info</span>: <span class="hljs-title class_">Deno</span>.<span class="hljs-property">ServeHandlerInfo</span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (request.<span class="hljs-property">url</span> != url_set[<span class="hljs-number">0</span>]+<span class="hljs-string">&#x27;/&#x27;</span> &amp;&amp; request.<span class="hljs-property">url</span> != url_set[<span class="hljs-number">0</span>]) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(<span class="hljs-string">&#x27;403 Forbidden&#x27;</span>,&#123;<span class="hljs-attr">status</span>: <span class="hljs-number">403</span>&#125;);<br>  &#125;<br>  <span class="hljs-keyword">var</span> flag;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> pair <span class="hljs-keyword">of</span> request.<span class="hljs-property">headers</span>.<span class="hljs-title function_">entries</span>()) &#123;<br>    <span class="hljs-keyword">if</span> (pair[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;referer&#x27;</span>) &#123;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> url <span class="hljs-keyword">of</span> url_set) &#123;<br>        <span class="hljs-keyword">if</span> (pair[<span class="hljs-number">1</span>].<span class="hljs-title function_">includes</span>(url)) &#123;<br>          <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Headers</span>();<br>          h.<span class="hljs-title function_">append</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span>, url);<br>          flag = <span class="hljs-literal">true</span>;<br>          <span class="hljs-keyword">break</span>;<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">if</span> (!flag) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(<span class="hljs-string">&#x27;403 Forbidden&#x27;</span>,&#123;<span class="hljs-attr">status</span>: <span class="hljs-number">403</span>&#125;);<br>  &#125;<br><br>  <span class="hljs-keyword">await</span> kv.<span class="hljs-title function_">atomic</span>().<span class="hljs-title function_">sum</span>([<span class="hljs-string">&quot;visitors&quot;</span>], <span class="hljs-number">1n</span>).<span class="hljs-title function_">commit</span>();<br>  <span class="hljs-keyword">const</span> count = <span class="hljs-keyword">await</span> kv.<span class="hljs-title function_">get</span>([<span class="hljs-string">&quot;visitors&quot;</span>]);<br><br>  <span class="hljs-keyword">const</span> ip = info.<span class="hljs-property">remoteAddr</span>.<span class="hljs-property">hostname</span>;<br>  <span class="hljs-keyword">const</span> ip_md5 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Hash</span>(<span class="hljs-string">&quot;md5&quot;</span>).<span class="hljs-title function_">digest</span>(<span class="hljs-title function_">encode</span>(ip)).<span class="hljs-title function_">hex</span>();<br><br>  <span class="hljs-keyword">const</span> user_array = <span class="hljs-keyword">await</span> kv.<span class="hljs-title function_">get</span>([<span class="hljs-string">&quot;user&quot;</span>]);<br>  <span class="hljs-keyword">if</span> (user_array.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(ip_md5) == -<span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">const</span> ex_array = user_array.<span class="hljs-property">value</span>.<span class="hljs-title function_">concat</span>(ip_md5)<br>    <span class="hljs-keyword">await</span> kv.<span class="hljs-title function_">set</span>([<span class="hljs-string">&quot;user&quot;</span>], ex_array)<br>    <span class="hljs-keyword">await</span> kv.<span class="hljs-title function_">atomic</span>().<span class="hljs-title function_">sum</span>([<span class="hljs-string">&quot;new&quot;</span>], <span class="hljs-number">1n</span>).<span class="hljs-title function_">commit</span>();<br>  &#125;<br>  <span class="hljs-keyword">const</span> pv = <span class="hljs-keyword">await</span> kv.<span class="hljs-title function_">get</span>([<span class="hljs-string">&quot;new&quot;</span>]);<br><br>  <span class="hljs-keyword">const</span> result = <span class="hljs-string">`\&#123;&quot;uv&quot;: <span class="hljs-subst">$&#123;count.value&#125;</span>, &quot;pv&quot;:<span class="hljs-subst">$&#123;pv.value&#125;</span>\&#125;`</span>;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(result, &#123;<span class="hljs-attr">headers</span>: h&#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<pre><code class="ts">import &#123; Hash, encode &#125; from &quot;https://deno.land/x/checksum@1.2.0/mod.ts&quot;;
+const kv = await Deno.openKv();
+const url_set = [&#39;这里替换为该Deploy项目的地址&#39;, &#39;后面这几个是你的网站地址(可以只填一个)&#39;, &#39;&#39;, &#39;&#39;]
 
+Deno.serve(async (request: Request, info: Deno.ServeHandlerInfo) =&gt; &#123;
+  if (request.url != url_set[0]+&#39;/&#39; &amp;&amp; request.url != url_set[0]) &#123;
+    return new Response(&#39;403 Forbidden&#39;,&#123;status: 403&#125;);
+  &#125;
+  var flag;
+  for (const pair of request.headers.entries()) &#123;
+    if (pair[0] == &#39;referer&#39;) &#123;
+      for (const url of url_set) &#123;
+        if (pair[1].includes(url)) &#123;
+          var h = new Headers();
+          h.append(&#39;Access-Control-Allow-Origin&#39;, url);
+          flag = true;
+          break;
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+  if (!flag) &#123;
+    return new Response(&#39;403 Forbidden&#39;,&#123;status: 403&#125;);
+  &#125;
+
+  await kv.atomic().sum([&quot;visitors&quot;], 1n).commit();
+  const count = await kv.get([&quot;visitors&quot;]);
+
+  const ip = info.remoteAddr.hostname;
+  const ip_md5 = new Hash(&quot;md5&quot;).digest(encode(ip)).hex();
+
+  const user_array = await kv.get([&quot;user&quot;]);
+  if (user_array.value.indexOf(ip_md5) == -1) &#123;
+    const ex_array = user_array.value.concat(ip_md5)
+    await kv.set([&quot;user&quot;], ex_array)
+    await kv.atomic().sum([&quot;new&quot;], 1n).commit();
+  &#125;
+  const pv = await kv.get([&quot;new&quot;]);
+
+  const result = `\&#123;&quot;uv&quot;: $&#123;count.value&#125;, &quot;pv&quot;:$&#123;pv.value&#125;\&#125;`;
+  return new Response(result, &#123;headers: h&#125;);
+&#125;);
+</code></pre>
 <h6 id="前端的配置"><a href="#前端的配置" class="headerlink" title="前端的配置"></a>前端的配置</h6><p>html部分：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">总访客<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;counter_uv&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>人<br>总访问量<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;counter_pv&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>次<br></code></pre></td></tr></table></figure>
-
+<pre><code class="html">总访客&lt;span id=&quot;counter_uv&quot;&gt;&lt;/span&gt;人
+总访问量&lt;span id=&quot;counter_pv&quot;&gt;&lt;/span&gt;次
+</code></pre>
 <p>js部分：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;url&#x27;</span>) <span class="hljs-comment">// 将url设置为你的Deno Deploy地址</span><br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>()<br>    &#125;)<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;<br>        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;counter_uv&#x27;</span>).<span class="hljs-property">innerHTML</span> = data.<span class="hljs-property">uv</span><br>        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;counter_pv&#x27;</span>).<span class="hljs-property">innerHTML</span> = data.<span class="hljs-property">pv</span><br>    &#125;)<br></code></pre></td></tr></table></figure>
+<pre><code class="javascript">fetch(&#39;url&#39;) // 将url设置为你的Deno Deploy地址
+    .then(response =&gt; &#123;
+        return response.json();
+    &#125;)
+    .then(data =&gt; &#123;
+        document.getElementById(&#39;counter_uv&#39;).innerHTML = data.uv;
+        document.getElementById(&#39;counter_pv&#39;).innerHTML = data.pv;
+    &#125;)
+</code></pre>
 
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
+    </div>
     
-      <span class="category-chain">
+    
+    
+    
+    
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024 少女的Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;少女
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
         
-  <a href="/categories/Code/" class="category-chain-item">Code</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Code/Hexo/" class="category-chain-item">Hexo</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Code/" class="print-no-link">#Code</a>
-      
-        <a href="/tags/Github/" class="print-no-link">#Github</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>Deno Deploy的妙用</div>
-      <div>https://onaniisyoujo.github.io/2024/03/09/Deno-Deploy的妙用/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>オナニー少女</div>
+        <div>
+            <div id="bsz">本站总访问量<span id="counter_pv">???</span>次&nbsp;&nbsp;
+            访客数<span id="counter_uv">???</span>人<br>
+            <span id="timeDate">载入天数...</span>
+            <span id="times">载入时分秒...</span>
+            <script src="/js/duration.js"></script></div>
         </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2024年3月9日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
+        
+        
     </div>
-    <div class="license-icon iconfont"></div>
-  </div>
+</footer>
 
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2024/03/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Toga%E5%88%B6%E4%BD%9C%E5%A5%87%E6%80%AA%E7%9A%84%E5%AE%89%E5%8D%93App/" title="如何使用Toga制作奇怪的安卓App">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何使用Toga制作奇怪的安卓App</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2024/02/08/%E4%BD%BF%E7%94%A8Cloudflare-Pages%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" title="使用Cloudflare Pages搭建图床">
-                        <span class="hidden-mobile">使用Cloudflare Pages搭建图床</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
             </div>
-
-            
-  
-  
-    <article id="comments" lazyload>
-      
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"https://pink.deno.dev/","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10,"reaction":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-    </article>
-  
-
-
-          </article>
-        </div>
-      </div>
+        </transition>
+        
     </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
+    <script src="/js/main.js"></script>
+    
     
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-    </div>
-  
-  
-    <div class="statistics">
-  
-  
-
-  
-        <div>总访问量<span id="counter_pv">???</span>次&nbsp;
-        总访客<span id="counter_uv">???</span>人</div>
-    
-    <!--  -->
-</div>
-
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text;
-      
-        text = subtitle.getAttribute('data-typed-text');
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://pink.deno.dev/",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick".split(","),
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        
     });
-  });
 </script>
 
 
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  
-<script src="/js/toggle.js"></script>
-<script src="/js/navbar.js"></script>
-<script src="/js/console.js"></script>
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
+    
 <!-- hexo injector body_end start --><script>!function(){if(!window.navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)&&Math.random()>=.5){var e=document.createElement("script");e.src="/js/L2Dwidget.min.js",e.async=!0,e.onload=(()=>{L2Dwidget.init({pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2d/model.json"},display:{position:"right",width:400,height:400},mobile:{show:!1},log:!0})}),document.body.appendChild(e)}else{var n=document.createElement("div"),t=document.createElement("link"),i=document.createElement("script");n.id="sakana-widget",n.style.position="fixed",n.style.right="0px",n.style.bottom="2px",n.style.zIndex=9999,t.rel="stylesheet",t.href="/css/sakana.min.css",i.async=!0,i.onload=(()=>{(new SakanaWidget).mount("#sakana-widget")}),i.src="https://cdn.staticfile.net/sakana-widget/2.7.0/sakana.min.js",document.body.appendChild(n),document.body.appendChild(t),document.body.appendChild(i)}}();</script><!-- hexo injector body_end end --></body>
 </html>
