@@ -1,0 +1,1 @@
+{"posted":"Dreamer-Paul","model":"./model.moc","textures":["./texture_002.avif"],"layout":{"center_x":0,"center_y":0,"width":2},"hit_areas_custom":{"head_x":[-0.35,0.6],"head_y":[0.19,-0.2],"body_x":[-0.3,-0.25],"body_y":[0.3,-0.9]},"motions":{"idle":[{"file":"./idle.mtn"}]}}
