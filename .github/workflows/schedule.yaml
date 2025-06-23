@@ -2,8 +2,8 @@ name: Update Blog
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 2 * * *"
+#  schedule:
+#    - cron: "0 2 * * *"
 
 jobs:
   update:
@@ -23,7 +23,7 @@ jobs:
           elif [ $day_of_week -eq 4 ] || [ $day_of_week -eq 7 ]; then
             echo "::set-output name=directory::Fuwari/"
           else # For Monday
-            echo "::set-output name=directory::Stellaris/"
+            echo "::set-output name=directory::Fuwari/"
           fi
 
       - name: Get Current Time
