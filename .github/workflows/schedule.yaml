@@ -23,7 +23,7 @@ jobs:
           elif [ $day_of_week -eq 4 ] || [ $day_of_week -eq 7 ]; then
             echo "::set-output name=directory::Fuwari/"
           else # For Monday
-            echo "::set-output name=directory::Fuwari/"
+            echo "::set-output name=directory::Pure/"
           fi
 
       - name: Get Current Time
