@@ -21,7 +21,7 @@ jobs:
           elif [ $day_of_week -eq 3 ] || [ $day_of_week -eq 6 ]; then
             echo "::set-output name=directory::Particlex/"
           elif [ $day_of_week -eq 4 ] || [ $day_of_week -eq 7 ]; then
-            echo "::set-output name=directory::Fuwari/"
+            echo "::set-output name=directory::Pure/"
           else # For Monday
             echo "::set-output name=directory::Pure/"
           fi
