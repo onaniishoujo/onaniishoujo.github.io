@@ -7,4 +7,5 @@
 - Hexo Diaspora
 - Hexo ShokaX
 - Hexo Anzhiyu
-- Fuwari
+- Astro Fuwari
+- Astro Pure

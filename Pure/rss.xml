@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="/scripts/pretty-feed-v3.xsl" type="text/xsl"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:h="http://www.w3.org/TR/html4/"><channel><title>少女的Blog</title><description>Built with Astro-Pure</description><link>https://astro-pure.js.org</link><item><title>过去的章节</title><link>https://astro-pure.js.org/blog/%E8%BF%87%E5%8E%BB%E7%9A%84%E7%AB%A0%E8%8A%82</link><guid isPermaLink="true">https://astro-pure.js.org/blog/%E8%BF%87%E5%8E%BB%E7%9A%84%E7%AB%A0%E8%8A%82</guid><pubDate>Sun, 27 Jul 2025 21:59:35 GMT</pubDate><content:encoded>&lt;p&gt;之前犯病写的一些东西，现在放在这里&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="/scripts/pretty-feed-v3.xsl" type="text/xsl"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:h="http://www.w3.org/TR/html4/"><channel><title>少女的Blog</title><description>Built with Astro-Pure</description><link>https://onaniishoujo.github.io</link><item><title>过去的章节</title><link>https://onaniishoujo.github.io/blog/%E8%BF%87%E5%8E%BB%E7%9A%84%E7%AB%A0%E8%8A%82</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/%E8%BF%87%E5%8E%BB%E7%9A%84%E7%AB%A0%E8%8A%82</guid><pubDate>Sun, 27 Jul 2025 21:59:35 GMT</pubDate><content:encoded>&lt;p&gt;之前犯病写的一些东西，现在放在这里&lt;/p&gt;
 &lt;p&gt;没想到这是梦的第一篇&lt;/p&gt;
 &lt;p&gt;删掉这些不就相当于杀掉过去的自己吗——&lt;/p&gt;
 &lt;h2&gt;我想变成女生&lt;/h2&gt;
@@ -77,10 +77,10 @@ tags:&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;好喜欢姐姐&lt;/p&gt;
 &lt;p&gt;想给姐姐生孩子&lt;/p&gt;
-&lt;p&gt;人家就是好喜欢被姐姐控制的感觉呜呜呜&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>建站一周年纪念</title><link>https://astro-pure.js.org/blog/%E5%BB%BA%E7%AB%99%E4%B8%80%E5%91%A8%E5%B9%B4%E7%BA%AA%E5%BF%B5</link><guid isPermaLink="true">https://astro-pure.js.org/blog/%E5%BB%BA%E7%AB%99%E4%B8%80%E5%91%A8%E5%B9%B4%E7%BA%AA%E5%BF%B5</guid><pubDate>Sat, 31 Aug 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2023/08/31建的这个小站，到现在已经一整年了&lt;/p&gt;
+&lt;p&gt;人家就是好喜欢被姐姐控制的感觉呜呜呜&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>建站一周年纪念</title><link>https://onaniishoujo.github.io/blog/%E5%BB%BA%E7%AB%99%E4%B8%80%E5%91%A8%E5%B9%B4%E7%BA%AA%E5%BF%B5</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/%E5%BB%BA%E7%AB%99%E4%B8%80%E5%91%A8%E5%B9%B4%E7%BA%AA%E5%BF%B5</guid><pubDate>Sat, 31 Aug 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2023/08/31建的这个小站，到现在已经一整年了&lt;/p&gt;
 &lt;p&gt;上高中了 以后可能没时间更新了&lt;/p&gt;
 &lt;p&gt;就这样吧，初音未来也十七周年了&lt;/p&gt;
-&lt;h2&gt;初音未来17岁生日快乐！！！&lt;/h2&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>Ubuntu配置Android SDK并使用Cordova</title><link>https://astro-pure.js.org/blog/ubuntu%E9%85%8D%E7%BD%AEandroid-sdk%E5%B9%B6%E4%BD%BF%E7%94%A8cordova</link><guid isPermaLink="true">https://astro-pure.js.org/blog/ubuntu%E9%85%8D%E7%BD%AEandroid-sdk%E5%B9%B6%E4%BD%BF%E7%94%A8cordova</guid><pubDate>Sat, 06 Apr 2024 17:48:53 GMT</pubDate><content:encoded>&lt;p&gt;在Ubuntu 20.04.6 LTS上配置Android SDK，并使用Cordova打包Android App&lt;/p&gt;
+&lt;h2&gt;初音未来17岁生日快乐！！！&lt;/h2&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>Ubuntu配置Android SDK并使用Cordova</title><link>https://onaniishoujo.github.io/blog/ubuntu%E9%85%8D%E7%BD%AEandroid-sdk%E5%B9%B6%E4%BD%BF%E7%94%A8cordova</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/ubuntu%E9%85%8D%E7%BD%AEandroid-sdk%E5%B9%B6%E4%BD%BF%E7%94%A8cordova</guid><pubDate>Sat, 06 Apr 2024 17:48:53 GMT</pubDate><content:encoded>&lt;p&gt;在Ubuntu 20.04.6 LTS上配置Android SDK，并使用Cordova打包Android App&lt;/p&gt;
 &lt;p&gt;这里使用Github的Codespace&lt;/p&gt;
 &lt;p&gt;~~用Goorm IDE发现存储空间不够，在Codespace上又重装了一遍~~&lt;/p&gt;
 &lt;h2&gt;配置Cordova&lt;/h2&gt;
@@ -129,7 +129,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/bin
 &lt;p&gt;将&lt;code&gt;$JAVA_HOME&lt;/code&gt;设置为JDK 17的目录&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Execution failed for task &apos;:app:mergeLibDexDebug&apos;. &gt; Could not resolve all files for configuration &apos;:app:debugRuntimeClasspath&apos;.   &gt; Failed to transform debug (project :CordovaLib) to match attributes {artifactType=android-dex, asm-transformed-variant=NONE, com.android.build.api.attributes.AgpVersionAttr=7.4.2, com.android.build.api.attributes.BuildTypeAttr=debug, com.android.build.gradle.internal.attributes.VariantAttr=debug, dexing-enable-desugaring=true, dexing-enable-jacoco-instrumentation=false, dexing-is-debuggable=true, dexing-min-sdk=24, org.gradle.libraryelements=classes, org.gradle.usage=java-runtime}.      &gt; Execution failed for DexingNoClasspathTransform: /workspaces/android/app/platforms/android/CordovaLib/build/intermediates/runtime_library_classes_dir/debug.         &gt; Error while dexing.&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;解决办法：&lt;/p&gt;
-&lt;p&gt;~~解决上面两个就没这个了~~&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>如何使用Toga制作奇怪的安卓App</title><link>https://astro-pure.js.org/blog/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8toga%E5%88%B6%E4%BD%9C%E5%A5%87%E6%80%AA%E7%9A%84%E5%AE%89%E5%8D%93app</link><guid isPermaLink="true">https://astro-pure.js.org/blog/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8toga%E5%88%B6%E4%BD%9C%E5%A5%87%E6%80%AA%E7%9A%84%E5%AE%89%E5%8D%93app</guid><pubDate>Fri, 22 Mar 2024 21:03:52 GMT</pubDate><content:encoded>&lt;p&gt;使用Python的Toga框架，快速制作一些&quot;奇怪的&quot;安卓App&lt;/p&gt;
+&lt;p&gt;~~解决上面两个就没这个了~~&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>如何使用Toga制作奇怪的安卓App</title><link>https://onaniishoujo.github.io/blog/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8toga%E5%88%B6%E4%BD%9C%E5%A5%87%E6%80%AA%E7%9A%84%E5%AE%89%E5%8D%93app</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8toga%E5%88%B6%E4%BD%9C%E5%A5%87%E6%80%AA%E7%9A%84%E5%AE%89%E5%8D%93app</guid><pubDate>Fri, 22 Mar 2024 21:03:52 GMT</pubDate><content:encoded>&lt;p&gt;使用Python的Toga框架，快速制作一些&quot;奇怪的&quot;安卓App&lt;/p&gt;
 &lt;p&gt;~~比如给某位幸运的同学做个 同城约*~~  ~~哈哈哈哈~~&lt;/p&gt;
 &lt;h2&gt;安装框架&lt;/h2&gt;
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;pip install briefcase
@@ -184,7 +184,7 @@ class MyApp(toga.App):
 
 def main():
     return MyApp()
-&lt;/code&gt;&lt;/pre&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>Deno Deploy的妙用</title><link>https://astro-pure.js.org/blog/deno-deploy%E7%9A%84%E5%A6%99%E7%94%A8</link><guid isPermaLink="true">https://astro-pure.js.org/blog/deno-deploy%E7%9A%84%E5%A6%99%E7%94%A8</guid><pubDate>Sat, 09 Mar 2024 20:24:18 GMT</pubDate><content:encoded>&lt;h2&gt;搭建Hexo博客&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>Deno Deploy的妙用</title><link>https://onaniishoujo.github.io/blog/deno-deploy%E7%9A%84%E5%A6%99%E7%94%A8</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/deno-deploy%E7%9A%84%E5%A6%99%E7%94%A8</guid><pubDate>Sat, 09 Mar 2024 20:24:18 GMT</pubDate><content:encoded>&lt;h2&gt;搭建Hexo博客&lt;/h2&gt;
 &lt;p&gt;默认分配一个&lt;code&gt;project_name.deno.dev&lt;/code&gt;域名，速度还可以&lt;/p&gt;
 &lt;p&gt;类似Cloudflare Pages&lt;/p&gt;
 &lt;p&gt;需要准备一个GitHub账号，使用GitHub登陆&lt;a href=&quot;https://dash.deno.com/signin&quot;&gt;Deno&lt;/a&gt;&lt;/p&gt;
@@ -373,7 +373,7 @@ function getJsonLength(jsonData: string[]): number {
 Deno.serve((req: Request) =&gt; {
     return handleRequest(req)
 });
-&lt;/code&gt;&lt;/pre&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>使用Cloudflare Pages搭建图床</title><link>https://astro-pure.js.org/blog/%E4%BD%BF%E7%94%A8cloudflare-pages%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A</link><guid isPermaLink="true">https://astro-pure.js.org/blog/%E4%BD%BF%E7%94%A8cloudflare-pages%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A</guid><pubDate>Thu, 08 Feb 2024 23:10:56 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>使用Cloudflare Pages搭建图床</title><link>https://onaniishoujo.github.io/blog/%E4%BD%BF%E7%94%A8cloudflare-pages%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/%E4%BD%BF%E7%94%A8cloudflare-pages%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A</guid><pubDate>Thu, 08 Feb 2024 23:10:56 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;⚠️警告⚠️&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;pages.dev&lt;/code&gt;域名被移动运营商屏蔽，请谨慎使用！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -406,7 +406,7 @@ Deno.serve((req: Request) =&gt; {
 &lt;p&gt;新建一个&lt;code&gt;Cloudflare Pages&lt;/code&gt;，选择上面仓库的某个分支并部署&lt;/p&gt;
 &lt;p&gt;此时你就得到了一个图床&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>使用Github Actions自动切换网站主题</title><link>https://astro-pure.js.org/blog/%E4%BD%BF%E7%94%A8github-actions%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A2%98</link><guid isPermaLink="true">https://astro-pure.js.org/blog/%E4%BD%BF%E7%94%A8github-actions%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A2%98</guid><pubDate>Sun, 21 Jan 2024 20:43:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;/ol&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>使用Github Actions自动切换网站主题</title><link>https://onaniishoujo.github.io/blog/%E4%BD%BF%E7%94%A8github-actions%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A2%98</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/%E4%BD%BF%E7%94%A8github-actions%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A2%98</guid><pubDate>Sun, 21 Jan 2024 20:43:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;现在网站用了六套主题，周一用Diaspora，周二和周日用ShokaX，周三和周六用Particlex，周四用Stellaris，周五用Fluid，里站用Brewski，可喜可贺&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;使用&lt;code&gt;Github Actions&lt;/code&gt;实现每天自动切换网站的主题&lt;/p&gt;
@@ -470,9 +470,9 @@ jobs:
 &lt;/ol&gt;
 &lt;p&gt;~~总之就挺神经病的~~&lt;/p&gt;
 &lt;p&gt;~~写的方法我自己都看不懂~~&lt;/p&gt;
-&lt;p&gt;~~感谢ChatGPT提供的GitHub Actions的源码~~&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>生日快乐</title><link>https://astro-pure.js.org/blog/%E7%94%9F%E6%97%A5%E5%BF%AB%E4%B9%90</link><guid isPermaLink="true">https://astro-pure.js.org/blog/%E7%94%9F%E6%97%A5%E5%BF%AB%E4%B9%90</guid><pubDate>Fri, 15 Dec 2023 21:48:38 GMT</pubDate><content:encoded>&lt;p&gt;生日快乐，我的15岁&lt;/p&gt;
+&lt;p&gt;~~感谢ChatGPT提供的GitHub Actions的源码~~&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>生日快乐</title><link>https://onaniishoujo.github.io/blog/%E7%94%9F%E6%97%A5%E5%BF%AB%E4%B9%90</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/%E7%94%9F%E6%97%A5%E5%BF%AB%E4%B9%90</guid><pubDate>Fri, 15 Dec 2023 21:48:38 GMT</pubDate><content:encoded>&lt;p&gt;生日快乐，我的15岁&lt;/p&gt;
 &lt;p&gt;许个愿——当然不能说出来啦！&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;12/15/2023&lt;/code&gt;&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>魔改Hexo Fluid</title><link>https://astro-pure.js.org/blog/%E9%AD%94%E6%94%B9hexo-fluid</link><guid isPermaLink="true">https://astro-pure.js.org/blog/%E9%AD%94%E6%94%B9hexo-fluid</guid><pubDate>Thu, 05 Oct 2023 20:23:53 GMT</pubDate><content:encoded>&lt;p&gt;整理一下本少女在使用hexo fluid时用到的代码&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;12/15/2023&lt;/code&gt;&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>魔改Hexo Fluid</title><link>https://onaniishoujo.github.io/blog/%E9%AD%94%E6%94%B9hexo-fluid</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/%E9%AD%94%E6%94%B9hexo-fluid</guid><pubDate>Thu, 05 Oct 2023 20:23:53 GMT</pubDate><content:encoded>&lt;p&gt;整理一下本少女在使用hexo fluid时用到的代码&lt;/p&gt;
 &lt;h2&gt;视频Banner&lt;/h2&gt;
 &lt;p&gt;将&lt;code&gt;themes/fluid/layout/_partials/header/banner.ejs&lt;/code&gt;修改为以下内容：&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;%
@@ -844,7 +844,7 @@ valine:
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;所以ParticleX为什么不支持Valine&lt;br&gt;
-高亮好像不支持ejs所以代码块上写的html&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>Hello, World!</title><link>https://astro-pure.js.org/blog/hello-world</link><guid isPermaLink="true">https://astro-pure.js.org/blog/hello-world</guid><pubDate>Wed, 30 Aug 2023 23:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;初音ミク16岁生日快乐！！！&lt;/h1&gt;
+高亮好像不支持ejs所以代码块上写的html&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item><item><title>Hello, World!</title><link>https://onaniishoujo.github.io/blog/hello-world</link><guid isPermaLink="true">https://onaniishoujo.github.io/blog/hello-world</guid><pubDate>Wed, 30 Aug 2023 23:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;初音ミク16岁生日快乐！！！&lt;/h1&gt;
 &lt;h1&gt;同时纪念少女的小站正式建成&lt;/h1&gt;
 &lt;h1&gt;2023.08.31 00:00 (JST)&lt;/h1&gt;
 &lt;p&gt;Hello, World!&lt;/p&gt;</content:encoded><h:img src="undefined"/><enclosure url="undefined"/></item></channel></rss>
